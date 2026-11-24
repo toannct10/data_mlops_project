@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "retained_ids": 20490,
+  "metadata_rows": 255749,
+  "semantic_metadata_sha256": "a27551e73f9cd1eb891c698c2d5eb02575d5fac6f9ca098bb3426ec4b379b940",
+  "all_retained_metadata_and_text_unchanged": true,
+  "accepted_store_opened_read_only": true
+}

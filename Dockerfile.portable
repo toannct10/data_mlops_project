@@ -1,0 +1,14 @@
+ARG BASE_IMAGE=python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
+FROM ${BASE_IMAGE}
+WORKDIR /app
+ENV PYTHONUNBUFFERED=1 PYTHONPATH=/app
+ARG INSTALL_DEPS=true
+COPY requirements-demo.txt requirements-phobert-absa.txt requirements-portable.txt requirements-portable-app.lock ./
+RUN if [ "$INSTALL_DEPS" = "true" ]; then pip install --no-cache-dir torch==2.9.1 --index-url https://download.pytorch.org/whl/cpu && pip install --no-cache-dir -r requirements-portable-app.lock; fi
+COPY src ./src
+COPY app ./app
+COPY prompts ./prompts
+COPY config ./config
+COPY sql ./sql
+COPY scripts ./scripts
+COPY qwen_v1.yaml qwen_v3_3b.yaml ./

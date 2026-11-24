@@ -1,0 +1,18 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct-GGUF",
+  "revision": "cc1e68eea5f05f88f41a6de1fc73110178f23715",
+  "model_file": "qwen2.5-3b-instruct-q4_k_m.gguf",
+  "model_sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+  "model_size_bytes": 2104932768,
+  "quantization": "Q4_K_M",
+  "parameter_count": 3090000000,
+  "license": null,
+  "runtime": "llama.cpp",
+  "runtime_tag": "b11429",
+  "runtime_commit": "d81235049384534c167caea52b85a694f6103d14",
+  "server_executable": "docker:qwen",
+  "server_sha256": "7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6",
+  "source_url": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/tree/cc1e68eea5f05f88f41a6de1fc73110178f23715",
+  "lfs_sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+  "download_timestamp": "2026-10-21T05:32:51.857278+00:00"
+}

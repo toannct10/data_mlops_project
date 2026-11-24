@@ -1,0 +1,855 @@
+{
+  "source_document": "Menu quán.docx",
+  "restaurants": [
+    {
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký"
+    },
+    {
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ"
+    },
+    {
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi"
+    }
+  ],
+  "items": [
+    {
+      "item_id": "2642-00-01",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nguyên con truyền thống",
+      "category": "Whole chicken",
+      "source_price_text": "210.000đ chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 210000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-00-02",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nguyên con rắc bột phô mai",
+      "category": "Whole chicken",
+      "source_price_text": "220.000đ chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 220000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-00-03",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nguyên con xốt ngũ vị",
+      "category": "Whole chicken",
+      "source_price_text": "220.000đ chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 220000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-00-04",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nguyên con xốt ngọt",
+      "category": "Whole chicken",
+      "source_price_text": "230.000đ chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 230000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-00-05",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nguyên con xốt kem hành",
+      "category": "Whole chicken",
+      "source_price_text": "230.000đ chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 230000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-00-06",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nguyên con xốt hoàng kim",
+      "category": "Whole chicken",
+      "source_price_text": "240.000đ chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 240000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-00-07",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nguyên con xốt tỏi Stamina",
+      "category": "Whole chicken",
+      "source_price_text": "250.000đ chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 250000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-00-08",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nguyên con xốt phô mai cay",
+      "category": "Whole chicken",
+      "source_price_text": "Liên hệ chi nhánh chickenplus.com",
+      "is_available": false,
+      "variants": []
+    },
+    {
+      "item_id": "2642-01-01",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Cánh gà Giòn King",
+      "category": "Chicken portions",
+      "source_price_text": "75.000đ / 4 miếng | 169.000đ / 10 miếng chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "4 miếng",
+          "unit_price": 75000
+        },
+        {
+          "name": "10 miếng",
+          "unit_price": 169000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-01-02",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Đùi gà Giòn King",
+      "category": "Chicken portions",
+      "source_price_text": "70.000đ / 2 cái | 159.000đ / 5 cái chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "2 cái",
+          "unit_price": 70000
+        },
+        {
+          "name": "5 cái",
+          "unit_price": 159000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-01-03",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà không xương Giòn King",
+      "category": "Chicken portions",
+      "source_price_text": "55.000đ / 100g | 149.000đ / 400g chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "100g",
+          "unit_price": 55000
+        },
+        {
+          "name": "400g",
+          "unit_price": 149000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-01-04",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Cánh gà xốt Hoàng Kim",
+      "category": "Chicken portions",
+      "source_price_text": "90.000đ / 4 miếng | 189.000đ / 10 miếng chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "4 miếng",
+          "unit_price": 90000
+        },
+        {
+          "name": "10 miếng",
+          "unit_price": 189000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-01-05",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Đùi gà xốt Hoàng Kim",
+      "category": "Chicken portions",
+      "source_price_text": "85.000đ / 2 cái | 179.000đ / 5 cái chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "2 cái",
+          "unit_price": 85000
+        },
+        {
+          "name": "5 cái",
+          "unit_price": 179000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-01-06",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Đùi gà ôm phô mai xốt Hoàng Kim",
+      "category": "Chicken portions",
+      "source_price_text": "90.000đ / 2 cái | 189.000đ / 5 cái chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "2 cái",
+          "unit_price": 90000
+        },
+        {
+          "name": "5 cái",
+          "unit_price": 189000
+        }
+      ]
+    },
+    {
+      "item_id": "2642-01-07",
+      "restaurant_id": "2642",
+      "restaurant_name": "Gà Rán Chicken Plus - Tô Ký",
+      "item_name": "Gà nửa con xốt Hoàng Kim",
+      "category": "Chicken portions",
+      "source_price_text": "— | 169.000đ chickenplus.com",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Phần lớn",
+          "unit_price": 169000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-01",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà sữa truyền thống",
+      "category": "Milk tea",
+      "source_price_text": "M 15K, L 20K, XL 30K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 15000
+        },
+        {
+          "name": "L",
+          "unit_price": 20000
+        },
+        {
+          "name": "XL",
+          "unit_price": 30000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-02",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà sữa đào",
+      "category": "Milk tea",
+      "source_price_text": "M 15K, L 20K, XL 30K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 15000
+        },
+        {
+          "name": "L",
+          "unit_price": 20000
+        },
+        {
+          "name": "XL",
+          "unit_price": 30000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-03",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà sữa kem trứng nướng",
+      "category": "Milk tea",
+      "source_price_text": "M 24K, L 29K, XL 39K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 24000
+        },
+        {
+          "name": "L",
+          "unit_price": 29000
+        },
+        {
+          "name": "XL",
+          "unit_price": 39000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-04",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà sữa thạch phô mai",
+      "category": "Milk tea",
+      "source_price_text": "M 21K, L 26K, XL 36K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 21000
+        },
+        {
+          "name": "L",
+          "unit_price": 26000
+        },
+        {
+          "name": "XL",
+          "unit_price": 36000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-05",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà sữa chocolate",
+      "category": "Milk tea",
+      "source_price_text": "M 17K, L 22K, XL 32K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 17000
+        },
+        {
+          "name": "L",
+          "unit_price": 22000
+        },
+        {
+          "name": "XL",
+          "unit_price": 32000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-06",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà sữa Thái xanh",
+      "category": "Milk tea",
+      "source_price_text": "M 15K, L 20K, XL 30K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 15000
+        },
+        {
+          "name": "L",
+          "unit_price": 20000
+        },
+        {
+          "name": "XL",
+          "unit_price": 30000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-07",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà sữa Thái đỏ",
+      "category": "Milk tea",
+      "source_price_text": "M 15K, L 20K, XL 30K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 15000
+        },
+        {
+          "name": "L",
+          "unit_price": 20000
+        },
+        {
+          "name": "XL",
+          "unit_price": 30000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-08",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Olong sữa lài",
+      "category": "Milk tea",
+      "source_price_text": "M 22K, L 27K, XL 37K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 22000
+        },
+        {
+          "name": "L",
+          "unit_price": 27000
+        },
+        {
+          "name": "XL",
+          "unit_price": 37000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-09",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Matcha latte",
+      "category": "Milk tea",
+      "source_price_text": "M 30K, L 35K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "M",
+          "unit_price": 30000
+        },
+        {
+          "name": "L",
+          "unit_price": 35000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-02-10",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà sữa 7 loại topping",
+      "category": "Milk tea",
+      "source_price_text": "Thố 29K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Thố",
+          "unit_price": 29000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-03-01",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà mãng cầu",
+      "category": "Fruit tea and drinks",
+      "source_price_text": "L 29K, XL 39K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "L",
+          "unit_price": 29000
+        },
+        {
+          "name": "XL",
+          "unit_price": 39000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-03-02",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà tứ quý",
+      "category": "Fruit tea and drinks",
+      "source_price_text": "L 29K, XL 39K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "L",
+          "unit_price": 29000
+        },
+        {
+          "name": "XL",
+          "unit_price": 39000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-03-03",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Trà đào",
+      "category": "Fruit tea and drinks",
+      "source_price_text": "L 25K, XL 35K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "L",
+          "unit_price": 25000
+        },
+        {
+          "name": "XL",
+          "unit_price": 35000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-03-04",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Olong lài vải trái nhãn",
+      "category": "Fruit tea and drinks",
+      "source_price_text": "L 27K, XL 37K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "L",
+          "unit_price": 27000
+        },
+        {
+          "name": "XL",
+          "unit_price": 37000
+        }
+      ]
+    },
+    {
+      "item_id": "1803-03-05",
+      "restaurant_id": "1803",
+      "restaurant_name": "AZ Tea - Trà Trái Cây - Đặng Văn Ngữ",
+      "item_name": "Milo dầm truyền thống",
+      "category": "Fruit tea and drinks",
+      "source_price_text": "L 22K, XL 32K aztea",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "L",
+          "unit_price": 22000
+        },
+        {
+          "name": "XL",
+          "unit_price": 32000
+        }
+      ]
+    },
+    {
+      "item_id": "145-04-01",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Cà phê sữa đá",
+      "category": "Coffee",
+      "source_price_text": "62.000đ cafebiz",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 62000
+        }
+      ]
+    },
+    {
+      "item_id": "145-04-02",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Cà phê dừa",
+      "category": "Coffee",
+      "source_price_text": "77.000đ cafebiz",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 77000
+        }
+      ]
+    },
+    {
+      "item_id": "145-04-03",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Bạc xỉu",
+      "category": "Coffee",
+      "source_price_text": "92.000đ cafebiz",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "DEFAULT",
+          "unit_price": 92000
+        }
+      ]
+    },
+    {
+      "item_id": "145-04-04",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Caffè Latte",
+      "category": "Coffee",
+      "source_price_text": "60.000–90.000đ tùy size aeonmall-binhtan",
+      "is_available": false,
+      "variants": []
+    },
+    {
+      "item_id": "145-04-05",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Caramel Macchiato",
+      "category": "Coffee",
+      "source_price_text": "60.000–90.000đ tùy size aeonmall-binhtan",
+      "is_available": false,
+      "variants": []
+    },
+    {
+      "item_id": "145-04-06",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Cold Brew",
+      "category": "Coffee",
+      "source_price_text": "65.000đ Tall / 77.000đ Grande / 89.000đ Venti aeonmall-binhtan",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Tall",
+          "unit_price": 65000
+        },
+        {
+          "name": "Grande",
+          "unit_price": 77000
+        },
+        {
+          "name": "Venti",
+          "unit_price": 89000
+        }
+      ]
+    },
+    {
+      "item_id": "145-04-07",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Vanilla Sweet Cream Cold Brew",
+      "category": "Coffee",
+      "source_price_text": "75.000đ Tall / 87.000đ Grande / 99.000đ Venti aeonmall-binhtan",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Tall",
+          "unit_price": 75000
+        },
+        {
+          "name": "Grande",
+          "unit_price": 87000
+        },
+        {
+          "name": "Venti",
+          "unit_price": 99000
+        }
+      ]
+    },
+    {
+      "item_id": "145-05-01",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Coffee Frappuccino",
+      "category": "Frappuccino",
+      "source_price_text": "80.000đ Tall / 92.000đ Grande / 104.000đ Venti aeonmall-binhtan",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Tall",
+          "unit_price": 80000
+        },
+        {
+          "name": "Grande",
+          "unit_price": 92000
+        },
+        {
+          "name": "Venti",
+          "unit_price": 104000
+        }
+      ]
+    },
+    {
+      "item_id": "145-05-02",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Caramel Frappuccino",
+      "category": "Frappuccino",
+      "source_price_text": "90.000đ Tall / 102.000đ Grande / 114.000đ Venti aeonmall-binhtan",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Tall",
+          "unit_price": 90000
+        },
+        {
+          "name": "Grande",
+          "unit_price": 102000
+        },
+        {
+          "name": "Venti",
+          "unit_price": 114000
+        }
+      ]
+    },
+    {
+      "item_id": "145-05-03",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Mocha Frappuccino",
+      "category": "Frappuccino",
+      "source_price_text": "80.000–124.000đ tùy size aeonmall-binhtan",
+      "is_available": false,
+      "variants": []
+    },
+    {
+      "item_id": "145-05-04",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Java Chip Frappuccino",
+      "category": "Frappuccino",
+      "source_price_text": "100.000đ Tall / 112.000đ Grande / 124.000đ Venti aeonmall-binhtan",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Tall",
+          "unit_price": 100000
+        },
+        {
+          "name": "Grande",
+          "unit_price": 112000
+        },
+        {
+          "name": "Venti",
+          "unit_price": 124000
+        }
+      ]
+    },
+    {
+      "item_id": "145-05-05",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Espresso Frappuccino",
+      "category": "Frappuccino",
+      "source_price_text": "Có trong menu Frappuccino cà phê xay starbucks",
+      "is_available": false,
+      "variants": []
+    },
+    {
+      "item_id": "145-06-01",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Matcha Latte",
+      "category": "Tea and refreshers",
+      "source_price_text": "Thuộc nhóm trà với sữa, giá thay đổi theo size cafebiz",
+      "is_available": false,
+      "variants": []
+    },
+    {
+      "item_id": "145-06-02",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Chai Tea Latte",
+      "category": "Tea and refreshers",
+      "source_price_text": "75.000đ Tall / 87.000đ Grande / 99.000đ Venti aeonmall-binhtan",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Tall",
+          "unit_price": 75000
+        },
+        {
+          "name": "Grande",
+          "unit_price": 87000
+        },
+        {
+          "name": "Venti",
+          "unit_price": 99000
+        }
+      ]
+    },
+    {
+      "item_id": "145-06-03",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Strawberry Açaí with Lemonade",
+      "category": "Tea and refreshers",
+      "source_price_text": "75.000đ Tall / 87.000đ Grande / 99.000đ Venti aeonmall-binhtan",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Tall",
+          "unit_price": 75000
+        },
+        {
+          "name": "Grande",
+          "unit_price": 87000
+        },
+        {
+          "name": "Venti",
+          "unit_price": 99000
+        }
+      ]
+    },
+    {
+      "item_id": "145-06-04",
+      "restaurant_id": "145",
+      "restaurant_name": "Starbucks Coffee - Nguyễn Văn Trỗi",
+      "item_name": "Mango Dragonfruit with Lemonade",
+      "category": "Tea and refreshers",
+      "source_price_text": "75.000đ Tall / 87.000đ Grande / 99.000đ Venti aeonmall-binhtan",
+      "is_available": true,
+      "variants": [
+        {
+          "name": "Tall",
+          "unit_price": 75000
+        },
+        {
+          "name": "Grande",
+          "unit_price": 87000
+        },
+        {
+          "name": "Venti",
+          "unit_price": 99000
+        }
+      ]
+    }
+  ]
+}

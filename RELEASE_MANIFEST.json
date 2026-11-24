@@ -1,0 +1,148 @@
+{
+  "release_version": "2026.11.23-internal-all-models-candidate.3",
+  "built_at_utc": "2026-11-23T13:21:46.245710+00:00",
+  "source_git_commit": null,
+  "source_git_note": "Existing extracted project has no .git",
+  "release_status": "INTERNAL_ALL_MODELS_CANDIDATE_NOT_FULLY_PORTABILITY_VERIFIED",
+  "distribution_scope": "internal_teammate_distribution_only",
+  "model_manifest": "config/portable/model_manifest.json",
+  "authorization_policy": "config/portable/distribution_policy.json",
+  "all_required_local_ai_models_bundled": true,
+  "external_model_pack_required": false,
+  "bundled_models": [
+    {
+      "path": "models/qwen_v3/qwen2.5-3b-instruct-q4_k_m.gguf",
+      "bytes": 2104932768,
+      "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+      "bundled": true,
+      "license": "Qwen Research (non-commercial research/evaluation only)",
+      "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+      "downloaded_automatically": false
+    },
+    {
+      "path": "models/embeddings/models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q/snapshots/faf4aa4225822f3bc6376869cb1164e8e3feedd0/model_optimized.onnx",
+      "bytes": 235052644,
+      "sha256": "634d0f66c29dc934c8fa72b8a4fe91dd4d420a22f1d82a241058d4316e659a99",
+      "bundled": true,
+      "license": "Apache-2.0",
+      "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+      "downloaded_automatically": false
+    },
+    {
+      "path": "models/phobert_absa/absa.pt",
+      "bytes": 540216658,
+      "sha256": "c4df8093f202deb83589b6884504f6cb9567ed6d6e62bd60a10845d46e2fef48",
+      "bundled": true,
+      "license": "Project-team authorized internal distribution; upstream model and dataset licenses remain binding",
+      "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+      "downloaded_automatically": false
+    },
+    {
+      "path": "models/phobert_absa/relevance.joblib",
+      "bytes": 6590404,
+      "sha256": "924dff55776c160ecb6f13f155ea731cbe28069a5731aa93cfcc6648545f3a77",
+      "bundled": true,
+      "license": "Project-team authorized internal distribution; upstream model and dataset licenses remain binding",
+      "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+      "downloaded_automatically": false
+    }
+  ],
+  "images": [
+    {
+      "name": "foody-portable-app:20261123",
+      "tested_local_image_id": "sha256:4447dd6aee5908568b76c0b3afca3e7921be2b3bcec06990d2fc8209cfee180e",
+      "distributed_as_image": false
+    },
+    {
+      "name": "foody-portable-airflow:20261123",
+      "tested_local_image_id": "sha256:b32f07c822f128ef1cd471c64af93a37edca089cf351d8762c8eafd4ddfaa218",
+      "distributed_as_image": false
+    }
+  ],
+  "database_seed": {
+    "seed_version": "foody-private-safe-20261123",
+    "counts": {
+      "orders": 405412,
+      "reviews": 20865,
+      "aspects": 60267,
+      "rag_privacy_exclusions": 40
+    },
+    "cloud_outbox_rows": 0,
+    "further_contact_redactions": 0,
+    "dump_sha256": "92cd8cc2d795e6facee10af8aa17173bb2728acf452af27b72f768a34e704250",
+    "dump_bytes": 23683514,
+    "protected_non_text_fingerprints": {
+      "fact_order": [
+        405412,
+        "25eaf91fbcf0474c442980955505b8ea"
+      ],
+      "fact_review_v2": [
+        20865,
+        "f5e2a7b64b590912296f0538247f6540"
+      ],
+      "fact_review_aspect": [
+        60267,
+        "80a8beb5ed50ab430528960e282b9527"
+      ]
+    },
+    "source_database_writes": 0,
+    "privacy_redactions_only_in_isolated_seed": true
+  },
+  "rag_snapshot": {
+    "source_count": 20490,
+    "bm25_count": 20490,
+    "chroma_count": 20490,
+    "unique_ids": 20490,
+    "ids_sha256": "c3623b48e00db1ac9a8bac95fb05c7344e62b497cccfbc02cc420e602c528834",
+    "embedding_dimensions": 384,
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "embedding_revision": "faf4aa4225822f3bc6376869cb1164e8e3feedd0",
+    "embedding_hash": "634d0f66c29dc934c8fa72b8a4fe91dd4d420a22f1d82a241058d4316e659a99",
+    "collection": "foody_39897b1e_634d0f66c29d",
+    "citation_text_and_restaurant_mapping": "PASS",
+    "recreated_from_retained_vectors": true,
+    "new_embeddings_generated": 0,
+    "accepted_index_rebuilt": false
+  },
+  "privacy_excluded_documents": 40,
+  "accepted_rag_snapshot_untouched": 20530,
+  "tests": {
+    "PASS": 21,
+    "FAIL": 0,
+    "SKIPPED": 6
+  },
+  "model_load_smoke": {
+    "status": "PASS",
+    "manifest_files_verified": 22,
+    "relevance_deserialized_and_predict_proba": "PASS",
+    "relevance_sha256": "924dff55776c160ecb6f13f155ea731cbe28069a5731aa93cfcc6648545f3a77",
+    "production_phobert_adapter_load_and_forward": "PASS",
+    "native_aspect_heads": 12,
+    "classes_per_head": 4,
+    "accepted_model_version": "4f75c638f1885ccf899b5515adef89da54a119a4",
+    "forward_and_load_seconds": 19.143,
+    "peak_rss_kib": 1557784,
+    "training_performed": false,
+    "embedding_model_loaded": false,
+    "qwen_header_and_hash": "PASS",
+    "second_qwen_server_started": false,
+    "full_qwen_rag_suite": "SKIPPED",
+    "scope": "One synthetic dining input, actual production CPU adapter; not benchmark accuracy or full-stack/clean-machine acceptance",
+    "runtime_warnings": [
+      "Relevance serialized with sklearn 1.6.1; unchanged accepted runtime sklearn 1.7.2 emitted InconsistentVersionWarning. Scoped smoke prediction passed; full parity not certified."
+    ]
+  },
+  "external_dependencies": [
+    "Docker Desktop/WSL2 Linux amd64",
+    "Internet for public images/locked package builds",
+    "Cloud only: authorized non-production resources and private credentials",
+    "GPU only: compatible separately verified CUDA runtime/image"
+  ],
+  "checksums": "SHA256SUMS.txt; final ZIP hash is adjacent in RELEASE_ARCHIVE_METADATA.json and .zip.sha256",
+  "known_limitations": [
+    "Separate-machine startup and full AI/cloud tests not executed",
+    "Legacy sklearn 1.6.1 -> 1.7.2 warning; smoke only, no broad parity certification",
+    "C19 FoodQuality evidence issue remains unresolved",
+    "No new embedding load, full second model stack or CUDA inference"
+  ]
+}

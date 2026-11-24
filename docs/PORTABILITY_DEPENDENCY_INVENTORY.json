@@ -1,0 +1,319 @@
+{
+  "status": "PASS",
+  "required_runtime_files": [
+    "Dockerfile.portable",
+    "Dockerfile.portable-airflow",
+    "docker-compose.portable.yml",
+    "docker-compose.portable.gpu.yml",
+    ".env.example",
+    "requirements-portable-app.lock",
+    "requirements-portable-airflow.lock",
+    "requirements-portable-dbt.lock",
+    "bootstrap/foody.dump",
+    "bootstrap/database_manifest.json",
+    "bootstrap/10_restore.sh",
+    "bootstrap/roles.sql",
+    "bootstrap/cloud_owner_template.sql",
+    "config/portable/data_manifest.json",
+    "config/portable/model_manifest.json",
+    "README_START_HERE.md",
+    "CLOUD_SETUP_GUIDE.md",
+    "TROUBLESHOOTING.md",
+    "src/portable/control.py",
+    "dags/foody_live_event_export.py",
+    "dags/foody_cloud_incremental.py",
+    "scripts/run_restricted_dbt.py",
+    "devops/prometheus/prometheus.yml",
+    "01_SETUP.ps1",
+    "02_START.ps1",
+    "03_HEALTH_CHECK.ps1",
+    "04_STOP.ps1",
+    "05_DIAGNOSE.ps1",
+    "06_INSTALL_MODELS.ps1",
+    "07_CLOUD_PREPARE.ps1",
+    "portable_common.ps1"
+  ],
+  "bind_sources": [
+    "bootstrap",
+    "bootstrap/10_restore.sh",
+    "data",
+    "devops/grafana/dashboards",
+    "devops/grafana/provisioning",
+    "devops/prometheus",
+    "models",
+    "reports"
+  ],
+  "images": [
+    {
+      "reference": "apache/airflow:slim-2.11.1-python3.12@sha256:e06e658c63aebd1d29947f9a2e7e2eee536cb8a1f8e7e261a991238610932ede",
+      "local_image_id": null,
+      "local_availability": "NOT_PRESENT; teammate pull/build required",
+      "external_or_built": "external public image; network/pull required on teammate machine",
+      "bundled_in_zip": false
+    },
+    {
+      "reference": "foody-portable-airflow:20261123",
+      "local_image_id": "sha256:b32f07c822f128ef1cd471c64af93a37edca089cf351d8762c8eafd4ddfaa218",
+      "local_availability": "PRESENT",
+      "external_or_built": "build from included Dockerfile",
+      "bundled_in_zip": false
+    },
+    {
+      "reference": "foody-portable-app:20261123",
+      "local_image_id": "sha256:4447dd6aee5908568b76c0b3afca3e7921be2b3bcec06990d2fc8209cfee180e",
+      "local_availability": "PRESENT",
+      "external_or_built": "build from included Dockerfile",
+      "bundled_in_zip": false
+    },
+    {
+      "reference": "ghcr.io/ggml-org/llama.cpp@sha256:c7b03e45cff9c4e984acd39032a6f3a82c811075b72bf176e329f84b8598c135",
+      "local_image_id": "sha256:c7b03e45cff9c4e984acd39032a6f3a82c811075b72bf176e329f84b8598c135",
+      "local_availability": "PRESENT",
+      "external_or_built": "external public image; network/pull required on teammate machine",
+      "bundled_in_zip": false
+    },
+    {
+      "reference": "grafana/grafana@sha256:db6ff9a4a98d4117bec4e75cbddcae6015a861cfd85075bac1f4786e2c46623f",
+      "local_image_id": "sha256:db6ff9a4a98d4117bec4e75cbddcae6015a861cfd85075bac1f4786e2c46623f",
+      "local_availability": "PRESENT",
+      "external_or_built": "external public image; network/pull required on teammate machine",
+      "bundled_in_zip": false
+    },
+    {
+      "reference": "postgres@sha256:01ea903aa65deb58eb49d6e09d859ecff63a6bb7d61feca55f2abad71d08f72a",
+      "local_image_id": "sha256:01ea903aa65deb58eb49d6e09d859ecff63a6bb7d61feca55f2abad71d08f72a",
+      "local_availability": "PRESENT",
+      "external_or_built": "external public image; network/pull required on teammate machine",
+      "bundled_in_zip": false
+    },
+    {
+      "reference": "prom/prometheus@sha256:332c2f43e7e389d74d3893b55bb02fbbd684208e681eeb604641d5d769c0fe2a",
+      "local_image_id": "sha256:332c2f43e7e389d74d3893b55bb02fbbd684208e681eeb604641d5d769c0fe2a",
+      "local_availability": "PRESENT",
+      "external_or_built": "external public image; network/pull required on teammate machine",
+      "bundled_in_zip": false
+    },
+    {
+      "reference": "python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+      "local_image_id": null,
+      "local_availability": "NOT_PRESENT; teammate pull/build required",
+      "external_or_built": "external public image; network/pull required on teammate machine",
+      "bundled_in_zip": false
+    }
+  ],
+  "models": {
+    "accepted_versions_unchanged": true,
+    "private_pack_required": false,
+    "files": [
+      {
+        "path": "models/qwen_v3/provenance.json",
+        "bytes": 878,
+        "sha256": "714f8801dfbf954fda73b0e869c4a5d4adeeaf96ba53be203b5ca2fca6589b05",
+        "bundled": true,
+        "license": "Qwen Research (non-commercial research/evaluation only)",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/qwen_v3/qwen2.5-3b-instruct-q4_k_m.gguf",
+        "bytes": 2104932768,
+        "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+        "bundled": true,
+        "license": "Qwen Research (non-commercial research/evaluation only)",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/embeddings/models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q/files_metadata.json",
+        "bytes": 798,
+        "sha256": "56a320fc6dd6e3d53bec8eff2b3eace26f5075b4722b001612ed29507241f534",
+        "bundled": true,
+        "license": "Apache-2.0",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/embeddings/models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q/refs/main",
+        "bytes": 40,
+        "sha256": "f5719ccbb70b50cf31f07542d53c3f498e8ee4f420527130b74c666f8dd80860",
+        "bundled": true,
+        "license": "Apache-2.0",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/embeddings/models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q/snapshots/faf4aa4225822f3bc6376869cb1164e8e3feedd0/config.json",
+        "bytes": 673,
+        "sha256": "c8ec081fdad2df991bf5abbf18418fec7a5cdaa421f60ffb060a30040b8c376f",
+        "bundled": true,
+        "license": "Apache-2.0",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/embeddings/models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q/snapshots/faf4aa4225822f3bc6376869cb1164e8e3feedd0/model_optimized.onnx",
+        "bytes": 235052644,
+        "sha256": "634d0f66c29dc934c8fa72b8a4fe91dd4d420a22f1d82a241058d4316e659a99",
+        "bundled": true,
+        "license": "Apache-2.0",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/embeddings/models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q/snapshots/faf4aa4225822f3bc6376869cb1164e8e3feedd0/special_tokens_map.json",
+        "bytes": 964,
+        "sha256": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+        "bundled": true,
+        "license": "Apache-2.0",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/embeddings/models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q/snapshots/faf4aa4225822f3bc6376869cb1164e8e3feedd0/tokenizer.json",
+        "bytes": 17083009,
+        "sha256": "fa685fc160bbdbab64058d4fc91b60e62d207e8dc60b9af5c002c5ab946ded00",
+        "bundled": true,
+        "license": "Apache-2.0",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/embeddings/models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q/snapshots/faf4aa4225822f3bc6376869cb1164e8e3feedd0/tokenizer_config.json",
+        "bytes": 1416,
+        "sha256": "0666eebf692422757e1dddf3c9fb1ded73ba3dc726c5828671fc89e45bf3609f",
+        "bundled": true,
+        "license": "Apache-2.0",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/absa.pt",
+        "bytes": 540216658,
+        "sha256": "c4df8093f202deb83589b6884504f6cb9567ed6d6e62bd60a10845d46e2fef48",
+        "bundled": true,
+        "license": "Project-team authorized internal distribution; upstream model and dataset licenses remain binding",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/absa_config.json",
+        "bytes": 495,
+        "sha256": "8ede97deb043104bbf78703a76af2a4bbab9c3498fd2821b46b942c334526c7d",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/absa_test_metrics.json",
+        "bytes": 199,
+        "sha256": "311ca5872737d7837bccc333a9201b61a2c4bb54fa8ecc60fcf2d0115eab1b05",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/backbone_config/config.json",
+        "bytes": 672,
+        "sha256": "9dc73f3a457990dedd8ea4e98af76494feef6f7ecf821d7283873057238ef7cf",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/history.csv",
+        "bytes": 1007,
+        "sha256": "391ba8e63dc74b90adaee79e047db5c78d0beea00a7adccaed2bc32cd05674f8",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/relevance.joblib",
+        "bytes": 6590404,
+        "sha256": "924dff55776c160ecb6f13f155ea731cbe28069a5731aa93cfcc6648545f3a77",
+        "bundled": true,
+        "license": "Project-team authorized internal distribution; upstream model and dataset licenses remain binding",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/relevance_config.json",
+        "bytes": 192,
+        "sha256": "9bcb5e32e28b5d42455209bfa485121482180b8b182f6cfb0950d7b602a0ce4c",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/relevance_proxy_metrics.json",
+        "bytes": 1180,
+        "sha256": "a229221b4535b87426edfd885f6b5c5a5729d962b330d24d0d85bf26e35d39f3",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/tokenizer/added_tokens.json",
+        "bytes": 22,
+        "sha256": "956163bbe8b0625fcc779207447308285eab218ffe0551d3e0deeae5538da326",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/tokenizer/bpe.codes",
+        "bytes": 1135173,
+        "sha256": "9dfe53fb8abbddd3387da99641c36e00bee757a3679aad9cf0a7cdc4b30f6ef8",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/tokenizer/special_tokens_map.json",
+        "bytes": 167,
+        "sha256": "d05497f1da52c5e09554c0cd874037a083e1dc1b9cfd48034d1c717f1afc07a7",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/tokenizer/tokenizer_config.json",
+        "bytes": 1203,
+        "sha256": "1ab8f3d8190e83c58f68a33888cb62e8e535e99c33383f4c4e0e8531abb08051",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      },
+      {
+        "path": "models/phobert_absa/tokenizer/vocab.txt",
+        "bytes": 895321,
+        "sha256": "dffd7543c401fb6567253ae7c3313004532c33d062525250049c616544bad777",
+        "bundled": true,
+        "license": "MIT base/tokenizer metadata; fine-tuned weights excluded",
+        "cpu_gpu": "CPU supported; CUDA profile requires separately verified compatible runtime",
+        "downloaded_automatically": false
+      }
+    ],
+    "distribution_scope": "internal_teammate_distribution_only",
+    "all_required_local_ai_models_bundled": true
+  },
+  "external_dependencies": [
+    "Docker Desktop / WSL2 Linux amd64",
+    "Internet for public image/package build; pinned Python locks included",
+    "Cloud only: separate authorized non-production S3 bucket, Snowflake account/database, runtime users/roles and private credentials",
+    "GPU only: separately verified compatible CUDA image/runtime"
+  ],
+  "cold_machine_pull_or_build_test": "SKIPPED",
+  "all_required_local_ai_model_files_in_zip": true,
+  "final_verification": "Adjacent current dependency inventory/archive audit bind final counts to delivered ZIP SHA256"
+}

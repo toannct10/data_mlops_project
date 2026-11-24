@@ -1,0 +1,10 @@
+{
+  "backend": "SQLite FTS5 BM25",
+  "source_sha256": "63376aa9677e7fd904739ac784815debe27058f4f67eb2ceb91e186b72ae8353",
+  "document_count": 20490,
+  "path": "data/foody/lexical_index_review_2025_2026/reviews.sqlite",
+  "build_seconds": 1.685201699998288,
+  "documents_per_second": 9170.415624441692,
+  "tokenizer": "unicode61 remove_diacritics 2",
+  "privacy_withheld_documents": 40
+}

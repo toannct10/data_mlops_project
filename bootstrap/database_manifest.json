@@ -1,0 +1,29 @@
+{
+  "seed_version": "foody-private-safe-20261123",
+  "counts": {
+    "orders": 405412,
+    "reviews": 20865,
+    "aspects": 60267,
+    "rag_privacy_exclusions": 40
+  },
+  "cloud_outbox_rows": 0,
+  "further_contact_redactions": 0,
+  "dump_sha256": "92cd8cc2d795e6facee10af8aa17173bb2728acf452af27b72f768a34e704250",
+  "dump_bytes": 23683514,
+  "protected_non_text_fingerprints": {
+    "fact_order": [
+      405412,
+      "25eaf91fbcf0474c442980955505b8ea"
+    ],
+    "fact_review_v2": [
+      20865,
+      "f5e2a7b64b590912296f0538247f6540"
+    ],
+    "fact_review_aspect": [
+      60267,
+      "80a8beb5ed50ab430528960e282b9527"
+    ]
+  },
+  "source_database_writes": 0,
+  "privacy_redactions_only_in_isolated_seed": true
+}

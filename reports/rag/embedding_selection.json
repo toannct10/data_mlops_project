@@ -1,0 +1,20 @@
+{
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "faf4aa4225822f3bc6376869cb1164e8e3feedd0",
+  "dimension": 384,
+  "model_file": "models\\embeddings\\models--Qdrant--paraphrase-multilingual-MiniLM-L12-v2-onnx-Q\\snapshots\\faf4aa4225822f3bc6376869cb1164e8e3feedd0\\model_optimized.onnx",
+  "model_hash": "634d0f66c29dc934c8fa72b8a4fe91dd4d420a22f1d82a241058d4316e659a99",
+  "model_size_mb": 235.052644,
+  "device": "CPU/ONNX Runtime",
+  "pool_documents": 612,
+  "embedding_seconds": 21.415197199999966,
+  "documents_per_second": 28.577836304024366,
+  "mean_query_embedding_ms": 3.209649999917019,
+  "known_positive_recall_at_5": 0.3333333333333333,
+  "known_positive_recall_at_10": 0.3333333333333333,
+  "known_positive_mrr": 0.3333333333333333,
+  "retrieval_latency_ms": 0.0851499999043881,
+  "selection_rule": "known-positive recall@10, then MRR, then query time",
+  "benchmark_scope": "Incomplete positives only; unlabeled documents may also be relevant. Known-positive hit rates are not full-corpus recall or retrieval accuracy.",
+  "onnx_source_repo": "Qdrant/paraphrase-multilingual-MiniLM-L12-v2-onnx-Q"
+}

@@ -1,0 +1,463 @@
+name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}
+services:
+  postgres:
+    image: postgres@sha256:01ea903aa65deb58eb49d6e09d859ecff63a6bb7d61feca55f2abad71d08f72a
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: foody
+      POSTGRES_DB: foody
+      POSTGRES_PASSWORD: ${PORTABLE_DB_PASSWORD}
+      PORTABLE_AI_PASSWORD: ${PORTABLE_AI_PASSWORD}
+    ports:
+    - 127.0.0.1:${PORTABLE_PG_PORT:-5433}:5432
+    volumes:
+    - portable_postgres:/var/lib/postgresql/data
+    - ./bootstrap:/bootstrap:ro
+    - ./bootstrap/10_restore.sh:/docker-entrypoint-initdb.d/10_restore.sh:ro
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U foody -d foody
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  data-init:
+    image: foody-portable-app:20261123
+    build: &id001
+      context: .
+      dockerfile: Dockerfile.portable
+      args:
+        BASE_IMAGE: ${PORTABLE_BUILD_BASE:-python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b}
+        INSTALL_DEPS: ${PORTABLE_INSTALL_DEPS:-true}
+    restart: 'no'
+    environment: &id002
+      FOODY_PORTABLE: 'true'
+      FOODY_PORTABLE_MODE: ${PORTABLE_MODE:-local}
+      FOODY_MODE: local
+      ANALYTICS_BACKEND: postgres
+      FOODY_DATABASE_URL: postgresql://foody:${PORTABLE_DB_PASSWORD}@postgres:5432/foody
+      FOODY_AI_DATABASE_URL: postgresql://foody_ai_readonly:${PORTABLE_AI_PASSWORD}@postgres:5432/foody
+      QWEN_BASE_URL: http://qwen:8193
+      FOODY_CROSS_ANALYTICS_BACKEND: ${PORTABLE_CROSS_BACKEND:-postgres}
+      TEXT_TO_SQL_ENABLED: 'true'
+      TEXT_TO_SQL_MAX_ROWS: '100'
+      TEXT_TO_SQL_TIMEOUT_SECONDS: '5'
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      ANONYMIZED_TELEMETRY: 'False'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      FOODY_LIVE_EVENT_SYNC_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_CLOUD_INCREMENTAL_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_CLOUD_DBT_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_AIRFLOW_MONITOR_ENABLED: 'true'
+      AWS_EC2_METADATA_DISABLED: 'true'
+      AWS_REGION: ap-southeast-2
+      AWS_DEFAULT_REGION: ap-southeast-2
+      FOODY_S3_BUCKET: ${FOODY_S3_BUCKET:-}
+      FOODY_S3_PREFIX: ${FOODY_S3_PREFIX:-foody-portable}
+      FOODY_LIVE_EVENT_PREFIX: ${FOODY_S3_PREFIX:-foody-portable}/events/v1/
+      SNOWFLAKE_DATABASE: ${SNOWFLAKE_DATABASE:-FOODY_PORTABLE}
+      SNOWFLAKE_WAREHOUSE: ${SNOWFLAKE_WAREHOUSE:-FOODY_WH}
+      SNOWFLAKE_PIPELINE_ROLE: FOODY_PIPELINE
+      SNOWFLAKE_DBT_ROLE: FOODY_DBT
+      SNOWFLAKE_AI_ROLE: FOODY_AI_READER
+      SNOWFLAKE_ROLE: FOODY_DBT
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN:-}
+      SNOWFLAKE_ACCOUNT: ${SNOWFLAKE_ACCOUNT:-}
+      SNOWFLAKE_USER: ${SNOWFLAKE_USER:-}
+      SNOWFLAKE_PASSWORD: ${SNOWFLAKE_PASSWORD:-}
+      PORTABLE_GRAFANA_PASSWORD: ${PORTABLE_GRAFANA_PASSWORD}
+      PORTABLE_PUT_PERMISSION_VERIFIED: ${PORTABLE_PUT_PERMISSION_VERIFIED:-false}
+    volumes:
+    - portable_data:/app/data
+    - ./models:/app/models:ro
+    - portable_state:/app/state
+    - portable_logs:/app/logs
+    - portable_outputs:/app/outputs
+    - ./reports:/app/reports:ro
+    - ./bootstrap:/app/bootstrap:ro
+    - ./data:/seed-data:ro
+    init: true
+    command:
+    - python
+    - -m
+    - src.portable.control
+    - init-data
+  rag-backend:
+    image: foody-portable-app:20261123
+    build: *id001
+    restart: unless-stopped
+    environment: *id002
+    volumes: &id003
+    - portable_data:/app/data
+    - ./models:/app/models:ro
+    - portable_state:/app/state
+    - portable_logs:/app/logs
+    - portable_outputs:/app/outputs
+    - ./reports:/app/reports:ro
+    - ./bootstrap:/app/bootstrap:ro
+    init: true
+    command:
+    - uvicorn
+    - app.api:api
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      data-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -m
+      - src.portable.control
+      - service-health
+      - backend
+      interval: 20s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
+    ports:
+    - 127.0.0.1:${PORTABLE_API_PORT:-8000}:8000
+  streamlit:
+    image: foody-portable-app:20261123
+    build: *id001
+    restart: unless-stopped
+    environment:
+      FOODY_PORTABLE: 'true'
+      FOODY_PORTABLE_MODE: ${PORTABLE_MODE:-local}
+      FOODY_MODE: local
+      ANALYTICS_BACKEND: postgres
+      FOODY_DATABASE_URL: postgresql://foody:${PORTABLE_DB_PASSWORD}@postgres:5432/foody
+      FOODY_AI_DATABASE_URL: postgresql://foody_ai_readonly:${PORTABLE_AI_PASSWORD}@postgres:5432/foody
+      QWEN_BASE_URL: http://qwen:8193
+      FOODY_CROSS_ANALYTICS_BACKEND: ${PORTABLE_CROSS_BACKEND:-postgres}
+      TEXT_TO_SQL_ENABLED: 'true'
+      TEXT_TO_SQL_MAX_ROWS: '100'
+      TEXT_TO_SQL_TIMEOUT_SECONDS: '5'
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      ANONYMIZED_TELEMETRY: 'False'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      FOODY_LIVE_EVENT_SYNC_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_CLOUD_INCREMENTAL_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_CLOUD_DBT_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_AIRFLOW_MONITOR_ENABLED: 'true'
+      AWS_EC2_METADATA_DISABLED: 'true'
+      AWS_REGION: ap-southeast-2
+      AWS_DEFAULT_REGION: ap-southeast-2
+      FOODY_S3_BUCKET: ${FOODY_S3_BUCKET:-}
+      FOODY_S3_PREFIX: ${FOODY_S3_PREFIX:-foody-portable}
+      FOODY_LIVE_EVENT_PREFIX: ${FOODY_S3_PREFIX:-foody-portable}/events/v1/
+      SNOWFLAKE_DATABASE: ${SNOWFLAKE_DATABASE:-FOODY_PORTABLE}
+      SNOWFLAKE_WAREHOUSE: ${SNOWFLAKE_WAREHOUSE:-FOODY_WH}
+      SNOWFLAKE_PIPELINE_ROLE: FOODY_PIPELINE
+      SNOWFLAKE_DBT_ROLE: FOODY_DBT
+      SNOWFLAKE_AI_ROLE: FOODY_AI_READER
+      SNOWFLAKE_ROLE: FOODY_DBT
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN:-}
+      SNOWFLAKE_ACCOUNT: ${SNOWFLAKE_ACCOUNT:-}
+      SNOWFLAKE_USER: ${SNOWFLAKE_USER:-}
+      SNOWFLAKE_PASSWORD: ${SNOWFLAKE_PASSWORD:-}
+      FOODY_STREAMLIT_METRICS_PORT: '8002'
+      PORTABLE_GRAFANA_PASSWORD: ${PORTABLE_GRAFANA_PASSWORD}
+      PORTABLE_PUT_PERMISSION_VERIFIED: ${PORTABLE_PUT_PERMISSION_VERIFIED:-false}
+    volumes: *id003
+    init: true
+    command:
+    - python
+    - -m
+    - src.ui.launch_bi
+    depends_on:
+      postgres:
+        condition: service_healthy
+      data-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -m
+      - src.portable.control
+      - service-health
+      - bi
+      interval: 20s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
+    ports:
+    - 127.0.0.1:${PORTABLE_BI_PORT:-8501}:8501
+  ordering-web:
+    image: foody-portable-app:20261123
+    build: *id001
+    restart: unless-stopped
+    environment:
+      FOODY_PORTABLE: 'true'
+      FOODY_PORTABLE_MODE: ${PORTABLE_MODE:-local}
+      FOODY_MODE: local
+      ANALYTICS_BACKEND: postgres
+      FOODY_DATABASE_URL: postgresql://foody:${PORTABLE_DB_PASSWORD}@postgres:5432/foody
+      FOODY_AI_DATABASE_URL: postgresql://foody_ai_readonly:${PORTABLE_AI_PASSWORD}@postgres:5432/foody
+      QWEN_BASE_URL: http://qwen:8193
+      FOODY_CROSS_ANALYTICS_BACKEND: ${PORTABLE_CROSS_BACKEND:-postgres}
+      TEXT_TO_SQL_ENABLED: 'true'
+      TEXT_TO_SQL_MAX_ROWS: '100'
+      TEXT_TO_SQL_TIMEOUT_SECONDS: '5'
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      ANONYMIZED_TELEMETRY: 'False'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      FOODY_LIVE_EVENT_SYNC_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_CLOUD_INCREMENTAL_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_CLOUD_DBT_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_AIRFLOW_MONITOR_ENABLED: 'true'
+      AWS_EC2_METADATA_DISABLED: 'true'
+      AWS_REGION: ap-southeast-2
+      AWS_DEFAULT_REGION: ap-southeast-2
+      FOODY_S3_BUCKET: ${FOODY_S3_BUCKET:-}
+      FOODY_S3_PREFIX: ${FOODY_S3_PREFIX:-foody-portable}
+      FOODY_LIVE_EVENT_PREFIX: ${FOODY_S3_PREFIX:-foody-portable}/events/v1/
+      SNOWFLAKE_DATABASE: ${SNOWFLAKE_DATABASE:-FOODY_PORTABLE}
+      SNOWFLAKE_WAREHOUSE: ${SNOWFLAKE_WAREHOUSE:-FOODY_WH}
+      SNOWFLAKE_PIPELINE_ROLE: FOODY_PIPELINE
+      SNOWFLAKE_DBT_ROLE: FOODY_DBT
+      SNOWFLAKE_AI_ROLE: FOODY_AI_READER
+      SNOWFLAKE_ROLE: FOODY_DBT
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN:-}
+      SNOWFLAKE_ACCOUNT: ${SNOWFLAKE_ACCOUNT:-}
+      SNOWFLAKE_USER: ${SNOWFLAKE_USER:-}
+      SNOWFLAKE_PASSWORD: ${SNOWFLAKE_PASSWORD:-}
+      FOODY_ORDERING_API_URL: http://rag-backend:8000
+      PORTABLE_GRAFANA_PASSWORD: ${PORTABLE_GRAFANA_PASSWORD}
+      PORTABLE_PUT_PERMISSION_VERIFIED: ${PORTABLE_PUT_PERMISSION_VERIFIED:-false}
+    volumes: *id003
+    init: true
+    command:
+    - python
+    - -m
+    - streamlit
+    - run
+    - app/ordering.py
+    - --server.address
+    - 0.0.0.0
+    - --server.port
+    - '8502'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      data-init:
+        condition: service_completed_successfully
+      rag-backend:
+        condition: service_healthy
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -m
+      - src.portable.control
+      - service-health
+      - ordering
+      interval: 20s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
+    ports:
+    - 127.0.0.1:${PORTABLE_ORDERING_PORT:-8502}:8502
+  qwen:
+    image: ${PORTABLE_QWEN_IMAGE:-ghcr.io/ggml-org/llama.cpp:server}
+    restart: unless-stopped
+    command:
+    - -m
+    - /models/qwen_v3/qwen2.5-3b-instruct-q4_k_m.gguf
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8193'
+    - --ctx-size
+    - '2048'
+    - --parallel
+    - '1'
+    - --threads
+    - ${PORTABLE_QWEN_THREADS:-2}
+    - --n-gpu-layers
+    - ${PORTABLE_GPU_LAYERS:-0}
+    volumes:
+    - ./models:/models:ro
+    ports:
+    - 127.0.0.1:${PORTABLE_QWEN_PORT:-8193}:8193
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -fsS
+      - http://127.0.0.1:8193/health
+      interval: 15s
+      timeout: 10s
+      retries: 40
+      start_period: 180s
+  airflow:
+    image: foody-portable-airflow:20261123
+    build:
+      context: .
+      dockerfile: Dockerfile.portable-airflow
+      args:
+        AIRFLOW_BASE_IMAGE: ${PORTABLE_AIRFLOW_BASE:-apache/airflow:slim-2.11.1-python3.12@sha256:e06e658c63aebd1d29947f9a2e7e2eee536cb8a1f8e7e261a991238610932ede}
+        INSTALL_DEPS: ${PORTABLE_INSTALL_DEPS:-true}
+    restart: unless-stopped
+    command:
+    - bash
+    - -c
+    - rm -f /opt/airflow/airflow-webserver.pid; exec airflow standalone
+    environment:
+      FOODY_PORTABLE: 'true'
+      FOODY_PORTABLE_MODE: ${PORTABLE_MODE:-local}
+      FOODY_MODE: local
+      ANALYTICS_BACKEND: postgres
+      FOODY_DATABASE_URL: postgresql://foody:${PORTABLE_DB_PASSWORD}@postgres:5432/foody
+      FOODY_AI_DATABASE_URL: postgresql://foody_ai_readonly:${PORTABLE_AI_PASSWORD}@postgres:5432/foody
+      QWEN_BASE_URL: http://qwen:8193
+      FOODY_CROSS_ANALYTICS_BACKEND: ${PORTABLE_CROSS_BACKEND:-postgres}
+      TEXT_TO_SQL_ENABLED: 'true'
+      TEXT_TO_SQL_MAX_ROWS: '100'
+      TEXT_TO_SQL_TIMEOUT_SECONDS: '5'
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      ANONYMIZED_TELEMETRY: 'False'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      FOODY_LIVE_EVENT_SYNC_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_CLOUD_INCREMENTAL_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_CLOUD_DBT_ENABLED: ${PORTABLE_CLOUD_WRITES:-false}
+      FOODY_AIRFLOW_MONITOR_ENABLED: 'true'
+      AWS_EC2_METADATA_DISABLED: 'true'
+      AWS_REGION: ap-southeast-2
+      AWS_DEFAULT_REGION: ap-southeast-2
+      FOODY_S3_BUCKET: ${FOODY_S3_BUCKET:-}
+      FOODY_S3_PREFIX: ${FOODY_S3_PREFIX:-foody-portable}
+      FOODY_LIVE_EVENT_PREFIX: ${FOODY_S3_PREFIX:-foody-portable}/events/v1/
+      SNOWFLAKE_DATABASE: ${SNOWFLAKE_DATABASE:-FOODY_PORTABLE}
+      SNOWFLAKE_WAREHOUSE: ${SNOWFLAKE_WAREHOUSE:-FOODY_WH}
+      SNOWFLAKE_PIPELINE_ROLE: FOODY_PIPELINE
+      SNOWFLAKE_DBT_ROLE: FOODY_DBT
+      SNOWFLAKE_AI_ROLE: FOODY_AI_READER
+      SNOWFLAKE_ROLE: FOODY_DBT
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN:-}
+      SNOWFLAKE_ACCOUNT: ${SNOWFLAKE_ACCOUNT:-}
+      SNOWFLAKE_USER: ${SNOWFLAKE_USER:-}
+      SNOWFLAKE_PASSWORD: ${SNOWFLAKE_PASSWORD:-}
+      AIRFLOW_HOME: /opt/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////opt/airflow/state/airflow.db
+      AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+      AIRFLOW__CORE__DAGS_FOLDER: /app/dags
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'True'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__DEFAULT_TIMEZONE: Asia/Ho_Chi_Minh
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: ${PORTABLE_AIRFLOW_PASSWORD}
+      PORTABLE_PUT_PERMISSION_VERIFIED: ${PORTABLE_PUT_PERMISSION_VERIFIED:-false}
+      AIRFLOW__WEBSERVER__WORKERS: '1'
+    ports:
+    - 127.0.0.1:${PORTABLE_AIRFLOW_PORT:-8088}:8080
+    volumes:
+    - portable_airflow:/opt/airflow
+    - portable_data:/app/data
+    - portable_outputs:/app/outputs
+    - portable_logs:/app/logs
+    - ./models:/app/models:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -m
+      - src.portable.control
+      - service-health
+      - airflow
+      interval: 20s
+      timeout: 10s
+      retries: 25
+      start_period: 90s
+  prometheus:
+    image: prom/prometheus@sha256:332c2f43e7e389d74d3893b55bb02fbbd684208e681eeb604641d5d769c0fe2a
+    restart: unless-stopped
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    - --storage.tsdb.path=/prometheus
+    - --storage.tsdb.retention.time=6h
+    - --storage.tsdb.retention.size=128MB
+    ports:
+    - 127.0.0.1:${PORTABLE_PROM_PORT:-9090}:9090
+    volumes:
+    - ./devops/prometheus:/etc/prometheus:ro
+    - portable_prometheus:/prometheus
+    healthcheck:
+      test:
+      - CMD
+      - wget
+      - -q
+      - -O
+      - /dev/null
+      - http://127.0.0.1:9090/-/healthy
+      interval: 15s
+      timeout: 5s
+      retries: 12
+  grafana:
+    image: grafana/grafana@sha256:db6ff9a4a98d4117bec4e75cbddcae6015a861cfd85075bac1f4786e2c46623f
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: ${PORTABLE_GRAFANA_PASSWORD}
+      GF_ANALYTICS_REPORTING_ENABLED: 'false'
+      GF_ANALYTICS_CHECK_FOR_UPDATES: 'false'
+      GF_PLUGINS_PLUGIN_ADMIN_ENABLED: 'false'
+    ports:
+    - 127.0.0.1:${PORTABLE_GRAFANA_PORT:-3000}:3000
+    volumes:
+    - ./devops/grafana/provisioning:/etc/grafana/provisioning:ro
+    - ./devops/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    - portable_grafana:/var/lib/grafana
+    healthcheck:
+      test:
+      - CMD
+      - wget
+      - -q
+      - -O
+      - /dev/null
+      - http://127.0.0.1:3000/api/health
+      interval: 15s
+      timeout: 5s
+      retries: 12
+volumes:
+  portable_postgres:
+    name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}_postgres
+  portable_data:
+    name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}_data
+  portable_state:
+    name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}_state
+  portable_outputs:
+    name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}_outputs
+  portable_logs:
+    name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}_logs
+  portable_airflow:
+    name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}_airflow
+  portable_prometheus:
+    name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}_prometheus
+  portable_grafana:
+    name: ${COMPOSE_PROJECT_NAME:-foody-portable-demo}_grafana

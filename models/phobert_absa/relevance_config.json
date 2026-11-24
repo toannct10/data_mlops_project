@@ -1,0 +1,8 @@
+{
+  "low": 0.2,
+  "high": 0.8,
+  "max_words": 120,
+  "weak_labels": true,
+  "news_dataset": "vanhai123/vietnamese-news-dataset",
+  "news_revision": "b3169868ffe23537827ec9ae2d8f6f38db437c8d"
+}

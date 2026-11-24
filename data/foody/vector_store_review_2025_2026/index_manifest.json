@@ -1,0 +1,21 @@
+{
+  "collection": "foody_39897b1e_634d0f66c29d",
+  "document_count": 20490,
+  "documents_sha256": "63376aa9677e7fd904739ac784815debe27058f4f67eb2ceb91e186b72ae8353",
+  "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "model_revision": "faf4aa4225822f3bc6376869cb1164e8e3feedd0",
+  "onnx_source_repo": "Qdrant/paraphrase-multilingual-MiniLM-L12-v2-onnx-Q",
+  "model_hash": "634d0f66c29dc934c8fa72b8a4fe91dd4d420a22f1d82a241058d4316e659a99",
+  "model_size_mb": 235.052644,
+  "device": "CPU/ONNX Runtime",
+  "dimension": 384,
+  "embedding_seconds": 387.2489120999744,
+  "documents_per_second": 39.90714890894337,
+  "mean_embedding_ms": 25.05816695353788,
+  "backend": "ChromaDB persistent cosine HNSW",
+  "timestamp": "2026-10-26T06:31:19.009765+00:00",
+  "privacy_derived_snapshot": true,
+  "privacy_withheld_documents": 40,
+  "embedding_vectors_reused": true,
+  "embedding_inference_runs": 0
+}

@@ -1,0 +1,30 @@
+{
+  "data_version": "review_2025_2026_v1",
+  "schema_version": 1,
+  "source_file": "data\\foody\\source\\data_2025_2026.csv",
+  "source_sha256": "9282ceaeeadf73d37927ed3033957b08f5d2fd5bb5a13a7688b63147c2358fe5",
+  "input_rows": 15639,
+  "exact_duplicates_removed": 183,
+  "row_count": 15456,
+  "restaurant_count": 817,
+  "date_min": "2025-01-01",
+  "date_max": "2026-06-30",
+  "sentiment_model_sha256": "212f4c36ca6f5e54f34401048689545606b20033828db95b02db7636107f85b6",
+  "aspect_model_sha256": "6177f927d2747dcbdde9c7dfa10b94f4a9e5fb128ce9cbbc06d852dd992ac715",
+  "sentiment_enrichment_count": 15456,
+  "aspect_enrichment_count": 15456,
+  "documents": {
+    "document_count": 20490,
+    "privacy_excluded_contact_documents": 40,
+    "sha256": "63376aa9677e7fd904739ac784815debe27058f4f67eb2ceb91e186b72ae8353"
+  },
+  "created_at": "2026-10-26T06:23:26.668198+00:00",
+  "frozen_source_documents": {
+    "document_count": 15454,
+    "excluded_corrupted_or_empty": 2,
+    "sha256": "216774cba4762169b47f0029f1527e083eaffe5226b4be1cae281679b2cab186"
+  },
+  "frozen_source_sha256": "4a5e4cc1d7b1f9eb9b2d392e551545e6c3b9082bbc8dfe01ddf17002aea8e787",
+  "portable_privacy_derived": true,
+  "canonical_database_manifest": "bootstrap/database_manifest.json"
+}

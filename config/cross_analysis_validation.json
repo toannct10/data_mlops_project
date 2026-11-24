@@ -1,0 +1,5 @@
+{
+  "near_zero_correlation_epsilon": 0.1,
+  "approx_equal_relative_tolerance": 0.01,
+  "approx_equal_absolute_tolerance": 0.000001
+}

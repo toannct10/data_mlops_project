@@ -1,0 +1,25 @@
+{
+  "aspects": [
+    "AMBIENCE#GENERAL",
+    "DRINKS#PRICES",
+    "DRINKS#QUALITY",
+    "DRINKS#STYLE&OPTIONS",
+    "FOOD#PRICES",
+    "FOOD#QUALITY",
+    "FOOD#STYLE&OPTIONS",
+    "LOCATION#GENERAL",
+    "RESTAURANT#GENERAL",
+    "RESTAURANT#MISCELLANEOUS",
+    "RESTAURANT#PRICES",
+    "SERVICE#GENERAL"
+  ],
+  "labels": [
+    "not_mentioned",
+    "positive",
+    "negative",
+    "neutral"
+  ],
+  "max_length": 256,
+  "source_commit": "4f75c638f1885ccf899b5515adef89da54a119a4",
+  "seed": 42
+}

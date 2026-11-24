@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "canonical_before": {
+    "fact_order": {
+      "rows": 405412,
+      "sha_content": "25eaf91fbcf0474c442980955505b8ea"
+    },
+    "fact_review_v2": {
+      "rows": 20865,
+      "sha_content": "4ce27da2af6f68dde3931e30a62f669c"
+    },
+    "fact_review_aspect": {
+      "rows": 60267,
+      "sha_content": "80a8beb5ed50ab430528960e282b9527"
+    }
+  },
+  "canonical_after": {
+    "fact_order": {
+      "rows": 405412,
+      "sha_content": "25eaf91fbcf0474c442980955505b8ea"
+    },
+    "fact_review_v2": {
+      "rows": 20865,
+      "sha_content": "4ce27da2af6f68dde3931e30a62f669c"
+    },
+    "fact_review_aspect": {
+      "rows": 60267,
+      "sha_content": "80a8beb5ed50ab430528960e282b9527"
+    }
+  },
+  "source_index_count": 20530,
+  "source_index_ids_sha256": "79a70e5bfbcf8c80dcdf7bd145c990a771df1324c0ae84eb732c39f4cf7f87bb",
+  "baseline_volumes_preserved": 22,
+  "accepted_containers": [
+    {
+      "name": "foody-full-demo-postgres-1",
+      "image_id": "sha256:01ea903aa65deb58eb49d6e09d859ecff63a6bb7d61feca55f2abad71d08f72a",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "name": "foody-full-demo-qwen-1",
+      "image_id": "sha256:c7b03e45cff9c4e984acd39032a6f3a82c811075b72bf176e329f84b8598c135",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "name": "foody-full-demo-rag-backend-1",
+      "image_id": "sha256:7ab638f732e54a522ba51155ee25d662f95438a9c03cfcc044dade44f5133e7e",
+      "running": true,
+      "health": "not configured"
+    },
+    {
+      "name": "foody-full-demo-streamlit-1",
+      "image_id": "sha256:7ab638f732e54a522ba51155ee25d662f95438a9c03cfcc044dade44f5133e7e",
+      "running": true,
+      "health": "not configured"
+    },
+    {
+      "name": "foody-full-demo-ordering-web-1",
+      "image_id": "sha256:fd87a53c78578577dc29f6157c4a22c9a09b37fbd5a703308df6ca0d8c7291b5",
+      "running": true,
+      "health": "not configured"
+    },
+    {
+      "name": "foody-full-demo-prometheus-1",
+      "image_id": "sha256:332c2f43e7e389d74d3893b55bb02fbbd684208e681eeb604641d5d769c0fe2a",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "name": "foody-full-demo-grafana-1",
+      "image_id": "sha256:db6ff9a4a98d4117bec4e75cbddcae6015a861cfd85075bac1f4786e2c46623f",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "name": "foody-full-demo-airflow-1",
+      "image_id": "sha256:314976e8e763e3bbe6b7f7690ae21f9aed5cb34014c664100463c7b1222f20e1",
+      "running": true,
+      "health": "healthy"
+    }
+  ],
+  "database_writes": 0,
+  "accepted_resources_recreated": false,
+  "note": "Existing containers restored after engine outage; fingerprints and accepted indexes unchanged"
+}

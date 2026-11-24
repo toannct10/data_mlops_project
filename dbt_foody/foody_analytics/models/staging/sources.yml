@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: foody_raw
+    database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+    schema: RAW
+    tables:
+      - name: orders
+      - name: reviews

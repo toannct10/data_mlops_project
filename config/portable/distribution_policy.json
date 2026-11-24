@@ -1,0 +1,11 @@
+{
+  "scope": "internal_teammate_distribution_only",
+  "team_authorization_confirmed": true,
+  "authorization_basis": "Project team explicitly authorized the exact accepted fine-tuned PhoBERT ABSA and relevance artifacts for this internal release.",
+  "upstream_model_and_dataset_licenses_remain_binding": true,
+  "public_or_commercial_distribution_authorized": false,
+  "models": [
+    {"path": "models/phobert_absa/absa.pt", "bytes": 540216658, "sha256": "c4df8093f202deb83589b6884504f6cb9567ed6d6e62bd60a10845d46e2fef48"},
+    {"path": "models/phobert_absa/relevance.joblib", "bytes": 6590404, "sha256": "924dff55776c160ecb6f13f155ea731cbe28069a5731aa93cfcc6648545f3a77"}
+  ]
+}

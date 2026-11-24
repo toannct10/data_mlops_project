@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "manifest_files_verified": 22,
+  "relevance_deserialized_and_predict_proba": "PASS",
+  "relevance_sha256": "924dff55776c160ecb6f13f155ea731cbe28069a5731aa93cfcc6648545f3a77",
+  "production_phobert_adapter_load_and_forward": "PASS",
+  "native_aspect_heads": 12,
+  "classes_per_head": 4,
+  "accepted_model_version": "4f75c638f1885ccf899b5515adef89da54a119a4",
+  "forward_and_load_seconds": 19.143,
+  "peak_rss_kib": 1557784,
+  "training_performed": false,
+  "embedding_model_loaded": false,
+  "qwen_header_and_hash": "PASS",
+  "second_qwen_server_started": false,
+  "full_qwen_rag_suite": "SKIPPED",
+  "scope": "One synthetic dining input, actual production CPU adapter; not benchmark accuracy or full-stack/clean-machine acceptance",
+  "runtime_warnings": [
+    "Relevance serialized with sklearn 1.6.1; unchanged accepted runtime sklearn 1.7.2 emitted InconsistentVersionWarning. Scoped smoke prediction passed; full parity not certified."
+  ]
+}
